@@ -1,0 +1,100 @@
+@mixin containerStyle($bgColor, $margin, $rounded, $padding: 0) {
+  background: $bgColor;
+  margin: $margin;
+  padding: $padding;
+  border-radius: $rounded;
+  overflow: hidden;
+  @include maxWidthQuery(1024px) {
+    margin: 20px;
+  }
+}
+
+@mixin flexCenter($gap: 0) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+@mixin categoryAbsolutePosition {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+@mixin flexBetween($gap: 0) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin styledButton($bgColor, $color, $border, $padding, $borderRadius: 8px) {
+  background-color: $bgColor;
+  color: $color;
+  border: $border;
+  border-radius: $borderRadius;
+  padding: $padding;
+  transition: all 400ms ease-in-out;
+  font-weight: 700;
+  font-family: Inter;
+  @include flexCenter(10px);
+  @include hoverEffect($whiteColor, $darkColor);
+}
+
+@mixin hoverEffect($bgColor, $color) {
+  &:hover {
+    background-color: $bgColor;
+    color: $color;
+  }
+}
+
+@mixin textStyle($color, $fontWeight, $fontSize, $fontFamily: default) {
+  color: $color;
+  font-family: $fontFamily;
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+}
+
+@mixin heroPsudo {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 5rem;
+  background: $primaryColor;
+  border-radius: 30px;
+}
+
+@mixin maxWidthQuery($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin minWidthQuery($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

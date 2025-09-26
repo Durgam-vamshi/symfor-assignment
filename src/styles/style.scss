@@ -1,0 +1,893 @@
+@import "variables";
+@import "mixins";
+
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+// Start Reset CSS
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+strike,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+// Finish Reset CSS
+
+body {
+  background-color: $whiteColor;
+  color: $darkColor;
+  font-family: Inter;
+  overflow-x: hidden;
+}
+
+h2 {
+  @include textStyle("", 700, 1.5rem);
+  line-height: 30px;
+}
+
+.paragraph {
+  @include textStyle($grayColor, "", 14px);
+  line-height: 22px;
+  margin-left: 3rem;
+}
+
+.box {
+  @include flexBetween;
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.card {
+  position: relative;
+  width: 360px;
+  height: 434px;
+  border-radius: 30px;
+  padding: 10px;
+  background: linear-gradient(180deg, rgba(231, 249, 253, 0) 0%, #e7f9fd 100%);
+  @include flexBetween(20px);
+  flex-direction: column;
+  align-items: start;
+  h3 {
+    @include textStyle("", 600, 24px);
+    line-height: 30px;
+  }
+  h4 {
+    @include textStyle("", 600, 18px);
+    line-height: 25px;
+  }
+  img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 30px;
+  }
+  .buttons_container {
+    @include flexCenter(20px);
+    margin-bottom: 1rem;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    white-space: nowrap;
+    color: $grayColor;
+    @include flexCenter(5px);
+  }
+
+  .favorite {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: $whiteColor;
+    border-radius: 50%;
+    right: 30px;
+    top: 30px;
+    @include flexCenter;
+  }
+}
+.hero {
+  @include flexCenter;
+  .hero_image {
+    @include flexCenter;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .hero_content {
+    flex: 1;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+
+    .hotRecipes_btn {
+      @include styledButton($whiteColor, $darkColor, none, 5px 15px, 50px);
+      margin-left: 3rem;
+    }
+    img {
+      height: 20px;
+      width: 20px;
+      object-fit: fill;
+    }
+    h1 {
+      @include textStyle("", 700, 2.5rem);
+      line-height: 45px;
+      margin-left: 3rem;
+    }
+
+    .buttons_container {
+      @include flexCenter(20px);
+      margin-left: 2.5rem;
+      button {
+        @include styledButton(rgba(0, 0, 0, 0.05), $grayColor, none, 0, 30px);
+        width: 139px;
+        height: 40px;
+        white-space: nowrap;
+      }
+    }
+    .recipes_info {
+      @include flexBetween(10px);
+      width: 80%;
+      margin-top: 30px;
+      margin-left: 3rem;
+
+      .chef_info {
+        @include flexBetween(10px);
+        img {
+          width: 45px;
+          height: 45px;
+          object-fit: contain;
+        }
+        .name {
+          @include textStyle($darkColor, 900, 13px);
+          margin-bottom: 10px;
+        }
+        .date {
+          @include textStyle($grayColor, "", 13px);
+          white-space: nowrap;
+        }
+      }
+
+      button {
+        @include styledButton(
+          $darkColor,
+          $whiteColor,
+          1px solid $darkColor,
+          12px 20px,
+          9px
+        );
+        transition: all 400ms ease-in-out;
+        font-weight: 700;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+    }
+  }
+  .handpick_recipes {
+    position: absolute;
+    top: 2rem;
+    img {
+      position: absolute;
+      top: 2.2rem;
+      right: 2.6rem;
+      width: 4.5rem;
+    }
+  }
+}
+.header_menu {
+  @include flexBetween(50px);
+}
+
+.header_menu li {
+  @include textStyle($darkColor, 700, 1rem);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  &:hover {
+    color: #00bde7;
+  }
+}
+header {
+  @include flexBetween;
+  padding: 30px 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background-color: $whiteColor;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.185);
+  h1 {
+    @include textStyle("", 500, 2rem, Lobster);
+    span {
+      color: orangered;
+    }
+  }
+
+  .socials {
+    @include flexBetween(30px);
+  }
+  .hamburger_menu {
+    cursor: pointer;
+  }
+}
+
+.toggle_menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: $primaryColor;
+  z-index: 100;
+  transform: translateX(-100%);
+  transition: all 0.4s ease;
+  &.menu-active {
+    transform: translateX(0);
+  }
+  ul {
+    @include flexBetween(50px);
+    background-color: $primaryColor;
+    border: none;
+    flex-direction: column;
+    gap: 50px;
+    align-items: start;
+    padding: 7rem 4rem;
+
+    li {
+      @include textStyle($darkColor, 700, 1.5rem);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 300ms ease-in-out;
+      &:hover {
+        color: #00bde7;
+      }
+    }
+  }
+
+  span {
+    @include textStyle("", 500, 2rem);
+    position: absolute;
+    right: 22px;
+    top: 12px;
+    cursor: pointer;
+  }
+
+  .socials_container {
+    padding-right: 20px;
+  }
+
+  .socials {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.hero_container {
+  position: relative;
+  .hero {
+    @include containerStyle($primaryColor, 20px 70px, 30px);
+    height: 450px;
+    &::after {
+      @include heroPsudo;
+      right: -3rem;
+    }
+    &::before {
+      @include heroPsudo;
+      left: -3rem;
+    }
+  }
+}
+
+.categories {
+  @include containerStyle($whiteColor, 20px 70px, 30px, 40px 0);
+  .categories_header {
+    @include flexBetween;
+    margin-bottom: 7rem;
+    button {
+      @include styledButton(
+        $primaryColor,
+        $darkColor,
+        2px solid $primaryColor,
+        15px 20px
+      );
+    }
+  }
+
+  .all_categories {
+    @include flexBetween(50px);
+    @each $element,
+      $color
+        in (
+          category1:
+            linear-gradient(
+              (180deg, rgba(112, 130, 70, 0) 0%, rgba(112, 130, 70, 0.1) 100%)
+            ),
+          category2:
+            linear-gradient(
+              (180deg, rgba(108, 198, 63, 0) 0%, rgba(108, 198, 63, 0.1) 100%)
+            ),
+          category3:
+            linear-gradient(
+              180deg,
+              rgba(204, 38, 27, 0) 0%,
+              rgba(204, 38, 27, 0.1) 100%
+            ),
+          category4:
+            linear-gradient(
+              180deg,
+              rgba(240, 158, 0, 0) 0%,
+              rgba(240, 158, 0, 0.1) 100%
+            ),
+          category5:
+            linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0) 0%,
+              rgba(0, 0, 0, 0.05) 100%
+            ),
+          category6:
+            linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0) 0%,
+              rgba(0, 0, 0, 0.05) 100%
+            )
+        )
+    {
+      .#{$element} {
+        @include flexCenter;
+        flex-direction: column;
+        position: relative;
+        width: 180px;
+        height: 152px;
+        border-radius: 30px;
+        background: $color;
+      }
+    }
+
+    img {
+      @include categoryAbsolutePosition;
+      top: -50px;
+    }
+    .img2 {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      top: -20px;
+      right: 10px;
+      filter: blur(15px);
+      opacity: 80%;
+    }
+    p {
+      @include textStyle($darkColor, 600, 1rem);
+      @include categoryAbsolutePosition;
+      letter-spacing: -2%;
+      text-align: center;
+      bottom: -50px;
+    }
+  }
+}
+
+.simple_recipes {
+  @include containerStyle($whiteColor, 20px 70px, 30px);
+  @include flexCenter;
+  flex-direction: column;
+  p {
+    width: 50%;
+    margin: 20px;
+    text-align: center;
+  }
+}
+
+.beChef_container {
+  .beChef {
+    @extend .hero;
+    @include containerStyle($whiteColor, 100px 70px, 30px);
+  }
+  .beChef_content {
+    @extend .hero_content;
+    h1,
+    p {
+      margin-left: 0 !important;
+    }
+  }
+  .learnMore_btn {
+    @include styledButton(
+      $darkColor,
+      $whiteColor,
+      1px solid $darkColor,
+      12px 20px,
+      9px
+    );
+    transition: all 400ms ease-in-out;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+}
+
+.delicious_recipes {
+  @include containerStyle($whiteColor, 150px 70px, 0px);
+  @include flexCenter;
+  flex-direction: column;
+  .delicious_recipes_header {
+    @include flexBetween;
+    margin-bottom: 50px;
+  }
+
+  .card {
+    width: 260px;
+    height: 316px;
+    .favorite {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.instagram {
+  @include containerStyle(
+    linear-gradient(180deg, rgba(231, 249, 253, 0) 0%, #e7f9fd 100%),
+    0,
+    0,
+    50px 70px 200px 70px
+  );
+  @include flexCenter;
+  flex-direction: column;
+
+  .instagram_header {
+    @include flexCenter(10px);
+    flex-direction: column;
+    margin-bottom: 50px;
+    text-align: center;
+    width: 80%;
+  }
+
+  .card {
+    width: 280px;
+    height: fit-content;
+    position: relative;
+    background: $whiteColor;
+    border-radius: 0;
+    padding: 0;
+    display: block;
+
+    .card_header {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      .card_header_left {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        img {
+          width: 12%;
+          object-fit: contain;
+          border-radius: 50%;
+        }
+        .card_header_info {
+          @include flexCenter(2px);
+          flex-direction: column;
+          font-size: 11px;
+          div {
+            @include flexCenter;
+          }
+        }
+      }
+    }
+
+    img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 0;
+    }
+    .slides {
+      @include textStyle($whiteColor, 300, 11px);
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      opacity: 60%;
+      background: #000000;
+      border-radius: 10px;
+      right: 15px;
+      top: 4rem;
+      @include flexCenter;
+    }
+  }
+  .content {
+    padding: 10px;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    line-height: 13px;
+  }
+  ul {
+    @include flexBetween;
+
+    .actions {
+      @include flexCenter(10px);
+    }
+    .dots {
+      font-size: 0.7rem;
+    }
+
+    .blueDot {
+      color: rgb(0, 174, 255);
+    }
+    .grayDot {
+      color: #c7c7c7;
+    }
+  }
+  .likes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    img {
+      width: 15px;
+      height: 15px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  small {
+    color: #c7c7c7;
+  }
+}
+
+.inbox {
+  position: relative;
+  @include containerStyle($primaryColor, 20px 70px, 30px, 70px 30px);
+  .inbox_header {
+    text-align: center;
+    p {
+      margin: 10px auto;
+      width: 50%;
+    }
+  }
+  form {
+    margin: 50px auto;
+    @include flexBetween;
+    background-color: $whiteColor;
+    padding: 0 10px 0 40px;
+    width: 420px;
+    height: 70px;
+    border-radius: 24px;
+  }
+  input {
+    border: none;
+    outline: none;
+  }
+  button {
+    width: 160px;
+    height: 50px;
+    @include styledButton(#000, $whiteColor, none, 5px, 16px);
+  }
+  .plate {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .salad {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .rucola {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    img {
+      width: 80px;
+    }
+  }
+}
+footer {
+  @include containerStyle($whiteColor, 20px 70px, 0, 100px 30px 0 30px);
+  div {
+    @include flexBetween(10px);
+  }
+  .logo {
+    flex-direction: column;
+    align-items: start;
+    h6 {
+      @include textStyle("", 500, 1.5rem, Lobster);
+      span {
+        color: orangered;
+      }
+    }
+    p {
+      color: #696969;
+      font-size: 15px;
+    }
+  }
+  .header_menu {
+    gap: 20px;
+  }
+  .copyright {
+    padding-top: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid #dfdfdf;
+    font-size: 14px;
+    color: #6d6d6d;
+    span {
+      color: rgb(255, 83, 83);
+    }
+  }
+}
+
+@include minWidthQuery(1024px) {
+  // Header
+  header {
+    .hamburger_menu {
+      display: none;
+    }
+  }
+}
+
+@include maxWidthQuery(600px) {
+  .card {
+    flex-grow: 5;
+  }
+  .delicious_recipes {
+    .card {
+      height: 434px;
+    }
+  }
+  .delicious_recipes_header {
+    flex-direction: column;
+  }
+}
+
+@include maxWidthQuery(1024px) {
+  .header_menu {
+    display: none;
+  }
+  // Header
+  header {
+    padding: 20px;
+    h1 {
+      font-size: 1.5rem;
+    }
+    .socials {
+      display: none;
+    }
+  }
+
+  // Hero
+  .hero_container .hero,
+  .hero {
+    flex-direction: column-reverse;
+    height: fit-content;
+  }
+  .hotRecipes_btn,
+  h1,
+  .hero p,
+  .buttons_container,
+  .recipes_info {
+    margin-left: 1rem !important;
+  }
+  .hero::after,
+  .hero::before {
+    display: none;
+  }
+  .hero_content {
+    padding: 20px 0;
+  }
+
+  .handpick_recipes {
+    display: none;
+  }
+
+  // Categories
+  .categories {
+    padding: 40px 0;
+
+    .all_categories {
+      justify-content: center;
+      flex-wrap: wrap;
+      row-gap: 70px;
+    }
+    .category1,
+    .category2,
+    .category3,
+    .category4,
+    .category5,
+    .category6 {
+      width: 150px !important;
+    }
+  }
+  // Simple recipes
+  .simple_recipes {
+    p {
+      width: 100%;
+    }
+  }
+  // Selicious recipes
+  .delicious_recipes {
+    margin: 70px 20px;
+    .delicious_recipes_header {
+      text-align: center;
+      row-gap: 10px;
+    }
+  }
+
+  // Be chef
+  .beChef_image img {
+    width: 100%;
+  }
+
+  // Instagram
+  .instagram {
+    padding: 50px 20px;
+    margin: 0;
+    height: fit-content;
+    .box {
+      row-gap: 2rem;
+    }
+    .instagram_header {
+      width: 100% !important;
+
+      p {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  // Inbox
+  .inbox {
+    padding: 100px 20px;
+    .inbox_header {
+      p,
+      .paragraph {
+        width: 100%;
+      }
+    }
+    form {
+      width: 85%;
+    }
+    .plate {
+      img {
+        width: 150px;
+      }
+    }
+    .salad {
+      img {
+        width: 200px;
+      }
+    }
+  }
+
+  // footer
+  footer {
+    padding: 20px;
+    .socials {
+      display: none;
+    }
+    .copyright {
+      @include flexCenter;
+    }
+  }
+}
