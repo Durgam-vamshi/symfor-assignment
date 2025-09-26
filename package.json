@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "postinstall": "chmod +x node_modules/.bin/tsc"
   },
   "dependencies": {
     "react": "^18.3.1",
