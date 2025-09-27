@@ -8,8 +8,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "postinstall": "chmod +x node_modules/.bin/tsc"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -27,7 +26,6 @@
     "eslint-plugin-react-refresh": "^0.4.12",
     "gh-pages": "^6.2.0",
     "globals": "^15.9.0",
-    "typescript-eslint": "^8.7.0",
     "vite": "^5.4.20"
   }
 }
