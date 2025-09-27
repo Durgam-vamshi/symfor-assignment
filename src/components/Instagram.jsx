@@ -62,7 +62,6 @@ const Instagram = () => {
             <div className="content">
               <ul>
                 <li className="actions">
-                  {/* Heart, comment, share icons */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -77,7 +76,7 @@ const Instagram = () => {
                       fill="#262626"
                     />
                   </svg>
-                  {/* Add other SVG icons here similarly */}
+      
                 </li>
 
                 <li className="dots">
@@ -87,7 +86,7 @@ const Instagram = () => {
                 </li>
 
                 <li>
-                  {/* Bookmark icon */}
+             
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

@@ -8,7 +8,8 @@ import Inbox from "./components/Inbox";
 import Instagram from "./components/Instagram";
 import SimpleRecipes from "./components/SimpleRecipes";
 import Socials from "./components/Socials";
-import "./styles/style.scss";
+import "./styles/style.css"
+
 
 export default function App() {
   const [openMenuModal, setOpenMenuModal] = useState(false);
